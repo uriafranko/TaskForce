@@ -1,6 +1,6 @@
 <div align="center">
 
-![Logo of TaskForce](./assets/logo.png)
+<img src="./assets/logo.png" alt="Logo of TaskForce" width="350"/>
 
 # **TaskForce**
 
