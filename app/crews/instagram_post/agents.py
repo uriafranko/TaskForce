@@ -46,7 +46,7 @@ class InstagramPostAgents:
             tools=[
                 BrowserTools.scrape_and_summarize_website,
                 SearchTools.search_internet,
-                SearchTools.search_website("instagram.com"),
+                SearchTools.search_instagram,
             ],
             verbose=verbose,
         )
@@ -72,7 +72,7 @@ class InstagramPostAgents:
             tools=[
                 BrowserTools.scrape_and_summarize_website,
                 SearchTools.search_internet,
-                SearchTools.search_website("instagram.com"),
+                SearchTools.search_instagram,
             ],
             verbose=verbose,
         )
@@ -95,7 +95,7 @@ class InstagramPostAgents:
             tools=[
                 BrowserTools.scrape_and_summarize_website,
                 SearchTools.search_internet,
-                SearchTools.search_website("instagram.com"),
+                SearchTools.search_instagram,
             ],
             verbose=verbose,
         )
@@ -120,7 +120,7 @@ class InstagramPostAgents:
             tools=[
                 BrowserTools.scrape_and_summarize_website,
                 SearchTools.search_internet,
-                SearchTools.search_website("instagram.com"),
+                SearchTools.search_instagram,
             ],
             verbose=verbose,
         )

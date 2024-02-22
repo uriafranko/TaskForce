@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from textwrap import dedent
 
 from crewai import Agent, Crew, Task
 
@@ -36,4 +37,12 @@ class CrewManager(ABC):
 
     @property
     def description(self):
-        return self.__doc__
+        if not self.__doc__:
+            return "No description provided"
+
+        return dedent(
+            f"""\
+{self.__doc__}
+Agent names: {', '.join(self.agents.keys())}
+            """
+        )

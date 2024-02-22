@@ -3,14 +3,14 @@ from crews.product_photographer.tasks import ProductPhotographerTasks
 from lib.interfaces.CrewManager import CrewManager
 
 
-class ProductPhotographer(CrewManager):
+class ProductPhotographerCrew(CrewManager):
     """
     Crew for product photography,
     Given a copy, product website and product details,
     the crew will generate text-2-image paragraphs for the copy
     """
 
-    def __init__(self, copy, product_website, product_details):
+    def __init__(self, copy: str, product_website: str, product_details: str):
         self.copy = copy
         self.product_website = product_website
         self.product_details = product_details

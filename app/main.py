@@ -1,19 +1,13 @@
-import time
-
 from load_dotenv import load_dotenv
 
-from crews.stock_analysis.crew import StockAnalysisCrew
+from crews.template_crew.crew import TemplateCrew
 
 load_dotenv()
 
 
 def main():
-    start_time = time.time()
-    my_financial_crew = StockAnalysisCrew(company="Tesla")
-
-    res = my_financial_crew.run()
-    print(res)
-    print(f"Time taken: {time.time() - start_time}")
+    template_crew = TemplateCrew(example="I am an example")
+    print(template_crew.description)
     print("Done!")
 
 

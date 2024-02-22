@@ -3,14 +3,14 @@ from crews.meeting_prep.tasks import MeetingPreparationTasks
 from lib.interfaces.CrewManager import CrewManager
 
 
-class MeetingPrep(CrewManager):
+class MeetingPrepCrew(CrewManager):
     """
     Crew for meeting preparation,
     Given a list of participants, context, and objective,
     the crew will help you prepare for the meeting by researching, analyzing and strategizing.
     """
 
-    def __init__(self, participants, context, objective):
+    def __init__(self, participants: str, context: str, objective: str):
         self.participants = participants
         self.context = context
         self.objective = objective

@@ -7,7 +7,7 @@ from lib.interfaces.CrewManager import CrewManager
 load_dotenv()
 
 
-class TestCrewInterface(unittest.TestSuite):
+class TestCrewInterface(unittest.TestCase):
     crew_class = CrewManager
 
     def init_class(self):

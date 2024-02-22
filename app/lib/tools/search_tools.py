@@ -74,15 +74,9 @@ class SearchTools:
 
         return "\n".join(string)
 
-    @tool("Search specific website")
-    @staticmethod
-    def search_website(website):
-        """Useful to search for specific websites about a given topic and
-        return relevant results."""
-        website = website
-
-        def site_wrapper(query: str):
-            query = f"site:{website} {query}"
-            return SearchTools.search_internet(query)
-
-        return site_wrapper
+    @tool("Search instagram")
+    def search_instagram(query):
+        """Useful to search for instagram post about a given topic and return relevant
+        results."""
+        query = f"site:instagram.com {query}"
+        return SearchTools.search_internet(query)

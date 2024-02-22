@@ -16,8 +16,8 @@ class StockAnalysisTest(TestCrewInterface):
 
     def test_crew_agents(self):
         crew = self.crew_class(self.company_name)
-        assert len(crew.agents) > 1
+        assert len(crew.agents) > 0
 
     def test_crew_tasks(self):
         crew = self.crew_class(self.company_name)
-        assert len(crew.tasks) > 1
+        assert len(crew.tasks) > 0

@@ -3,7 +3,7 @@ from crews.trip_planner.tasks import TripTasks
 from lib.interfaces.CrewManager import CrewManager
 
 
-class TripCrew(CrewManager):
+class TripPlannerCrew(CrewManager):
     """
     Crew for trip planning,
     Given a city, interests, and date range,
@@ -11,7 +11,7 @@ class TripCrew(CrewManager):
     using local experts and travel concierge
     """
 
-    def __init__(self, origin, cities, date_range, interests):
+    def __init__(self, origin: str, cities: str, date_range: str, interests: str):
         self.cities = cities
         self.origin = origin
         self.interests = interests

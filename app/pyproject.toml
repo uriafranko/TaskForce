@@ -17,11 +17,13 @@ langchain-community = "^0.0.21"
 load-dotenv = "^0.1.0"
 yfinance = "^0.2.36"
 faiss-cpu = "^1.7.4"
+pytest-emoji = "^0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.2.2"
 black = "^24.2.0"
 pre-commit = "^3.6.2"
+pytest = "^8.0.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -79,3 +81,11 @@ quote-style = "double"
 # docstring-code-format = true
 line-ending = "auto"
 skip-magic-trailing-comma = false
+
+
+[tool.pytest.ini_options]
+addopts = "--ignore=.venv/*"
+norecursedirs = ".venv"  # This tells pytest not to enter these directories during collection
+filterwarnings = [
+    "ignore::Warning" # Too many warning from packages
+]

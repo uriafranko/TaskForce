@@ -1,10 +1,10 @@
 from crews.instagram_post.agents import InstagramPostAgents
 from crews.instagram_post.tasks import InstagramPostTasks
-from crews.product_photographer.crew import ProductPhotographer
+from crews.product_photographer.crew import ProductPhotographerCrew
 from lib.interfaces.CrewManager import CrewManager
 
 
-class InstagramPost(CrewManager):
+class InstagramPostCrew(CrewManager):
     """
     Crew for Instagram post,
     Given a product website, product details and objective,
@@ -49,7 +49,7 @@ class InstagramPost(CrewManager):
     def run(self):
         post_text = self.crew.kickoff()
 
-        post_image_description = ProductPhotographer(
+        post_image_description = ProductPhotographerCrew(
             copy=post_text,
             product_website=self.product_website,
             product_details=self.product_details,
