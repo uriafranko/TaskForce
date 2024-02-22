@@ -37,4 +37,4 @@ jobs:
           emoji: true
           verbose: true
           job-summary: true
-          custom-pytest: 'cd app && poetry run pytest run_tests.py '
+          custom-pytest: 'cd app && poetry run pytest '
