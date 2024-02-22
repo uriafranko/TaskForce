@@ -1,0 +1,30 @@
+.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+.ruff_cache
+.venv
+.mp3
+
+# IDE
+.idea
+.vscode
+
+# Logs
+*.log
+
+# Build
+build
+dist
+node_modules
+npm-debug.log*
+yarn-debug.log*
+
+# Python
+*.pyc
+
+# Extra
+*.DS_Store
+*.mp3
+*.wav

@@ -1,0 +1,61 @@
+{
+  "name": "TaskForce",
+  "build": {
+    // Sets the run context to one level up instead of the .devcontainer folder.
+    "context": "../app",
+    // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+    "dockerfile": "../app/Dockerfile.dev"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers-contrib/features/black:2": {},
+    "ghcr.io/devcontainers-contrib/features/mypy:2": {},
+    "ghcr.io/devcontainers-contrib/features/poetry:2": {},
+    "ghcr.io/devcontainers-contrib/features/pylint:2": {}
+  },
+
+  "forwardPorts": [8000, 8000],
+
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "git.openRepositoryInParentFolders": "always",
+        "github.copilot.enable": {
+          "*": true,
+          "yaml": true,
+          "plaintext": true,
+          "markdown": true,
+          "scminput": false
+        },
+        "editor.rulers": [79],
+        "[python]": {
+          "analysis.typeCheckingMode": "basic",
+          "analysis.autoImportCompletions": true,
+          "editor.tabSize": 4,
+          "editor.insertSpaces": true,
+          "editor.formatOnSave": true,
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        }
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "esbenp.prettier-vscode",
+        "GitHub.copilot",
+        "usernamehw.errorlens",
+        "tamasfe.even-better-toml"
+      ]
+    }
+  },
+
+  "workspaceMount": "source=${localWorkspaceFolder},target=/src,type=bind",
+  "workspaceFolder": "/src/app/",
+
+  "postAttachCommand": "pre-commit install --overwrite"
+
+  // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "devcontainer"
+}

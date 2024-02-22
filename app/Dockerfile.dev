@@ -1,0 +1,33 @@
+FROM python:3.11-slim as dev_base
+
+# Set environment variables to:
+# - Prevent Python from writing pyc files to disc (useful in production)
+# - Make Python output unbuffered, which is useful in Docker containers
+# - Define an environment variable for versioning that can be used in your application
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYCURL_SSL_LIBRARY=openssl \
+    VERSION=1.0.0
+
+WORKDIR /src/app
+
+# Use `apt-get install -y --no-install-recommends` to only install essential packages and avoid extra packages
+# Cleanup cache and temporary files in the same layer to keep the image size small
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends gcc libffi-dev openssl libcurl4-openssl-dev libssl-dev git libc-dev make && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /root/.cache
+
+# Install poetry in the base image to avoid reinstalling it every time a dependency changes
+# This is efficient if you're using a multi-stage build and your dependencies don't change as often as your code
+RUN pip install --no-cache-dir poetry
+
+# Copy the pyproject.toml and poetry.lock files first to cache the dependencies installation
+# This is beneficial if your project's source code changes more frequently than your dependencies
+COPY ./app/pyproject.toml ./app/poetry.lock* /src/app/
+
+# Project dependencies:
+# Disable virtualenv creation by poetry to install dependencies globally in the image
+# Install runtime dependencies only, without dev-dependencies
+RUN poetry config virtualenvs.create false && \
+    poetry install --no-interaction --no-ansi --no-root

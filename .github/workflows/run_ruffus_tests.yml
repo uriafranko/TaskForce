@@ -1,0 +1,40 @@
+on:
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+
+name: Run Tests
+
+jobs:
+  deploy:
+    name: Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      #----------------------------------------------
+      #       check-out repo and set-up python
+      #----------------------------------------------
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Install poetry
+        run: pipx install poetry
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'poetry'
+      #----------------------------------------------
+      # install dependencies if cache does not exist
+      #----------------------------------------------
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-root
+      #----------------------------------------------
+      # Run tests and publish results
+      #----------------------------------------------
+      - uses: pavelzw/pytest-action@v2
+        with:
+          emoji: true
+          verbose: true
+          job-summary: true
+          custom-pytest: 'cd app && poetry run pytest run_tests.py '
