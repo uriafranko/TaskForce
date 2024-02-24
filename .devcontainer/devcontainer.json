@@ -52,7 +52,7 @@
   },
 
   "workspaceMount": "source=${localWorkspaceFolder},target=/src,type=bind",
-  "workspaceFolder": "/src/app/",
+  "workspaceFolder": "/src/taskforce/",
 
   "postAttachCommand": "pre-commit install --overwrite"
 

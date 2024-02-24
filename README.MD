@@ -10,24 +10,59 @@
 
 </div>
 
-## Getting Started
+# Getting Started
 
-To get started with TaskForce,
+## Options
 
-Options:
+- [Run inside the dev container](#dev-container)
+- [Install the dependencies locally](#local-installation)
 
-- Run inside the dev container
-- Install the dependencies locally
+## Project structure
 
-## Contribution
+```bash
+    .
+    ├── .github
+    │   ├── workflows
+    ├── .devcontainer
+    │   ├── devcontainer.json # Dev container configuration
+    ├── assets
+    │   ├──... # Images and other assets
+    ├── taskforce
+    │   ├── lib
+    │   │   ├── interfaces
+    │   │       ├── ...     # Interfaces for the framework
+    │   │   ├── tools
+    │   │       ├── ...     # Tools folders
+    │   │   ├── models.py   # General models for the framework
+    │   │   ├── task_utils.py
+    │   ├── crews
+    │   │   ├── ... # Crews folders
+    ├── .env.example # Example of the .env file, not all the variables are required
+    ├── Dockerfile.dev
+    ├── README.md
 
-TaskForce is open-source and we welcome contributions. If you're looking to contribute, please:
+```
 
-- Fork the repository.
-- Create a new branch for your feature.
-- Add your feature or improvement.
-- Send a pull request.
-- We appreciate your input!
+# Development
+
+## Dev Container
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/products/docker-desktop)
+- [VSCode](https://code.visualstudio.com/)
+- [Dev Container Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+### Running the Dev Container
+
+- Open the project in VSCode
+- Open the `Command Palette` (Cmd+Shift+P)
+- Select "Reopen in Container"
+- Wait for the container to build
+- Run `make run-tests` to run the tests
+- Done!
+
+## Local Installation
 
 ### Installing Dependencies
 
@@ -54,9 +89,14 @@ pre-commit install
 poetry run pytest
 ```
 
-```bash
-make run-tests
-```
+### Contribution
+
+TaskForce is open-source and we welcome contributions. If you're looking to contribute, please:
+
+- Fork the repository.
+- Create a new branch for your updates.
+- Add your agent, tool or any other improvement.
+- Send a pull request.
 
 ## License
 

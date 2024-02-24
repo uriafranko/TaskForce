@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYCURL_SSL_LIBRARY=openssl \
     VERSION=1.0.0
 
-WORKDIR /src/app
+WORKDIR /src/taskforce
 
 # Use `apt-get install -y --no-install-recommends` to only install essential packages and avoid extra packages
 # Cleanup cache and temporary files in the same layer to keep the image size small
@@ -24,7 +24,7 @@ RUN pip install --no-cache-dir poetry
 
 # Copy the pyproject.toml and poetry.lock files first to cache the dependencies installation
 # This is beneficial if your project's source code changes more frequently than your dependencies
-COPY ./app/pyproject.toml ./app/poetry.lock* /src/app/
+COPY ./taskforce/pyproject.toml ./taskforce/poetry.lock* /src/taskforce/
 
 # Project dependencies:
 # Disable virtualenv creation by poetry to install dependencies globally in the image

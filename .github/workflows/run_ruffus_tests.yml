@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: app
+        working-directory: taskforce
     steps:
       #----------------------------------------------
       #       check-out repo and set-up python
@@ -37,4 +37,4 @@ jobs:
           emoji: true
           verbose: true
           job-summary: true
-          custom-pytest: 'cd app && poetry run pytest '
+          custom-pytest: 'cd taskforce && poetry run pytest '
